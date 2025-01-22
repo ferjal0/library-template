@@ -4,7 +4,7 @@ A generic library template starter for new JOYCO libs.
 
 ## ❗️ MUST DO ON TEMPLATE FORK ❗️
 
-This is a sample package that serves as a template. If you are forking from it you NEED to update the `package.json` "name" field. Also **DELETE** the `.changeset/` folder and the `CHANGELOG.md` file to start your library versioning history from the very start.
+This is a sample package that serves as a template. If you are forking from it you **NEED** to update the `package.json` "name" field. Also **DELETE** the `.changeset/` folder and the `CHANGELOG.md` file to start your library versioning history from the very start.
 
 ## 👀 Good to know
 
