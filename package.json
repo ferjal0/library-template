@@ -1,5 +1,9 @@
 {
   "name": "@joycostudio/generic",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "The generic template library starter from joyco.studio",
   "main": "dist/index.js",
