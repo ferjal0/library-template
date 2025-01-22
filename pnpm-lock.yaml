@@ -41,6 +41,9 @@ devDependencies:
   globals:
     specifier: ^15.14.0
     version: 15.14.0
+  prettier:
+    specifier: ^3.4.2
+    version: 3.4.2
   react:
     specifier: ^18.2.0
     version: 18.3.1
