@@ -3,6 +3,7 @@
 A generic library template starter for new JOYCO libs.
 
 ## ❗️ MUST DO ON TEMPLATE FORK ❗️
+
 This is a sample package that serves as a template. If you are forking from it you NEED to update the `package.json` "name" field. Also **DELETE** the `.changeset/` folder and the `CHANGELOG.md` file to start your library versioning history from the very start.
 
 ## 👀 Good to know
@@ -40,13 +41,10 @@ To create a new version and update the changelog:
 
 ```bash
 # 1. Create new versions of packages
-pnpm changeset version
+pnpm version:package
 
-# 2. Build the packages
-pnpm build
-
-# 3. Publish to npm
-pnpm changeset publish
+# 2. Release (builds and publishes to npm)
+pnpm release
 ```
 
 Remember to commit all changes after creating a release.
