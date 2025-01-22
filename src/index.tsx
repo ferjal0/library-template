@@ -3,5 +3,5 @@ export const GenericComponent = () => {
 };
 
 export const useGenericHook = () => {
-  return "GenericHook";
+  return 'GenericHook';
 };
