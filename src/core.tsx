@@ -1,7 +1,7 @@
 export const GenericComponent = () => {
-  return <div>GenericComponent</div>;
-};
+  return <div>GenericComponent</div>
+}
 
 export const useGenericHook = () => {
-  return 'GenericHook';
-};
+  return 'GenericHook'
+}
