@@ -1,3 +1,3 @@
 export type MetriConfig = {
-  debug?: boolean;
-};
+  debug?: boolean
+}
