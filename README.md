@@ -2,8 +2,6 @@
 
 A generic library template starter for new JOYCO libs.
 
-<br/>
-
 ## ✨ Features
 
 | Feature                | Description                                                                          |
