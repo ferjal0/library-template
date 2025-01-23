@@ -41,6 +41,57 @@ function validatePackageName(name) {
     return { valid: false, errors: ['Package name cannot be longer than 214 characters'] }
   }
 
+  // Handle scoped packages
+  const scopedPackageRegex = /^@([^/]+)\/([^/]+)$/
+  const isScoped = name.startsWith('@')
+
+  if (isScoped) {
+    if (!name.match(scopedPackageRegex)) {
+      return {
+        valid: false,
+        errors: ['Scoped package names must be in the format @scope/package-name'],
+      }
+    }
+
+    const [, scope, packageName] = name.match(scopedPackageRegex)
+
+    // Validate scope
+    if (!scope.match(/^[a-z0-9-_.]+$/)) {
+      return {
+        valid: false,
+        errors: [
+          'Scope can only contain URL-safe characters: lowercase letters, numbers, hyphens, underscores, and dots',
+        ],
+      }
+    }
+
+    // Validate package name part
+    if (!packageName.match(/^[a-z0-9-_.]+$/)) {
+      return {
+        valid: false,
+        errors: [
+          'Package name can only contain URL-safe characters: lowercase letters, numbers, hyphens, underscores, and dots',
+        ],
+      }
+    }
+
+    if (packageName.match(/[._]{2,}/) || scope.match(/[._]{2,}/)) {
+      return { valid: false, errors: ['Neither scope nor package name can contain consecutive dots or underscores'] }
+    }
+
+    if (scope.match(/^[._]/) || packageName.match(/^[._]/)) {
+      return { valid: false, errors: ['Neither scope nor package name can start with dots or underscores'] }
+    }
+
+    // Package name must be lowercase
+    if (name.toLowerCase() !== name) {
+      return { valid: false, errors: ['Package name must be lowercase'] }
+    }
+
+    return { valid: true }
+  }
+
+  // Non-scoped package validation
   if (name.match(/^[._]/)) {
     return { valid: false, errors: ['Package name cannot start with dots or underscores'] }
   }
@@ -147,7 +198,9 @@ async function main() {
 
     // Install dependencies
     console.log('\nInstalling dependencies...')
-    await execAsync('pnpm install')
+    const { stdout, stderr } = await execAsync('pnpm install', { stdio: 'inherit' })
+    if (stdout) console.log(stdout)
+    if (stderr) console.error(stderr)
 
     // Remove setup script from package.json
     delete packageJson.scripts['setup:template']
