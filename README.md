@@ -2,7 +2,7 @@
 
 A generic library template starter for new JOYCO libs.
 
-| Feature                | Description                                                                          |
+| Features               | Description                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | 🚀 Quick Setup         | Initialize your library with a single command using `pnpm setup:template` |
 | 📦 Modern Build System | Built with **tsup** for fast, modern builds supporting ESM and CJS |
