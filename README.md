@@ -17,6 +17,16 @@ pnpm remove @types/react react
 
 Then **manually** remove the peerDependencies section from `package.json` and also check `eslint.config.js`, `tsconfig.json`.
 
+## 🤖 Automatic Workflows
+
+This template comes with two GitHub Actions workflows (currently disabled for convenience):
+
+1. **Release Workflow** (`.github/workflows/release.yml.disabled`): Automates the release process using Changesets. When enabled, it will automatically create release pull requests and publish to npm when changes are pushed to the main branch.
+
+2. **Publish Any Commit** (`.github/workflows/publish-any-commit.yml.disabled`): A utility workflow that can build and publish packages for any commit or pull request.
+
+To enable these workflows, simply remove the `.disabled` extension from the workflow files in the `.github/workflows/` directory. We recommend enabling them to automate your package's release process.
+
 ## 🦋 Version Management
 
 This library uses [Changesets](https://github.com/changesets/changesets) to manage versions and publish releases. Here's how to use it:
