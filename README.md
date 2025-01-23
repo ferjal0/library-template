@@ -2,18 +2,22 @@
 
 A generic library template starter for new JOYCO libs.
 
+<br/>
+
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| 🚀 Quick Setup | Initialize your library with a single command using `pnpm setup:template` |
-| 📦 Modern Build System | Built with **tsup** for fast, modern builds supporting ESM and CJS |
-| 🔄 Automatic Releases | Optional automated publishing and version management with **Changesets** |
-| 🔍 PR Preview | Optional package preview builds for every PR and commit with **pkg.pr.new** |
-| 🎯 TypeScript Ready | Full TypeScript support with strict type checking |
-| 🧹 Code Quality | ESLint and Prettier pre-configured for code quality |
-| ⚛️ React Support | Optional React support with proper peer dependencies React 19 + React Compiler ready |
-| 🔒 Type Safety | Strict TypeScript configuration for better type safety |
+| Feature                | Description                                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| 🚀 Quick Setup         | Initialize your library with a single command using `pnpm setup:template`            |
+| 📦 Modern Build System | Built with **tsup** for fast, modern builds supporting ESM and CJS                   |
+| 🔄 Automatic Releases  | Optional automated publishing and version management with **Changesets**             |
+| 🔍 PR Preview          | Optional package preview builds for every PR and commit with **pkg.pr.new**          |
+| 🎯 TypeScript Ready    | Full TypeScript support with strict type checking                                    |
+| 🧹 Code Quality        | ESLint and Prettier pre-configured for code quality                                  |
+| ⚛️ React Support       | Optional React support with proper peer dependencies React 19 + React Compiler ready |
+| 🔒 Type Safety         | Strict TypeScript configuration for better type safety                               |
+
+<br/>
 
 ## ❗️ MUST DO ON TEMPLATE FORK ❗️
 
@@ -28,10 +32,13 @@ This will fill package information and install deps for you. Remember to commit.
 > If you enable PR & commit package preview you need to install [PKG.PR.NEW](https://github.com/apps/pkg-pr-new) on the target repository.
 
 ### `package.json` defaults
+
 - `author: @joycostudio`
 - `publishConfig.access: private`
 - `version: 0.0.0`
 - `license: ISC`
+
+<br/>
 
 ## 👀 Good to know
 
@@ -44,6 +51,8 @@ pnpm remove @types/react react
 
 Then **manually** remove the peerDependencies section from `package.json` and also check `eslint.config.js`, `tsconfig.json`.
 
+<br/>
+
 ## 🤖 Automatic Workflows
 
 This template comes with two GitHub Actions workflows (currently disabled for convenience):
@@ -53,6 +62,8 @@ This template comes with two GitHub Actions workflows (currently disabled for co
 2. **Publish Any Commit** (`.github/workflows/publish-any-commit.yml.disabled`): A utility workflow that can build and publish packages for any commit or pull request.
 
 To enable these workflows, simply remove the `.disabled` extension from the workflow files in the `.github/workflows/` directory. We recommend enabling them to automate your package's release process.
+
+<br/>
 
 ## 🦋 Version Management
 
