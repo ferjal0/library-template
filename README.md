@@ -12,6 +12,8 @@ pnpm setup:template
 
 This will fill package information and install deps for you. Remember to commit.
 
+> If you enable PR & commit package preview you need to install [PKG.PR.NEW](https://github.com/apps/pkg-pr-new) on the target repository.
+
 ### `package.json` defaults
 - `author: @joycostudio`
 - `publishConfig.access: private`
