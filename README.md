@@ -14,7 +14,7 @@ A generic library template starter for new JOYCO libs.
 | 🔍 PR Preview          | Optional package preview builds for every PR and commit with [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new) |
 | 🎯 TypeScript Ready    | Full TypeScript support with strict type checking |
 | 🧹 Code Quality        | ESLint and Prettier pre-configured for code quality |
-| ⚛️ React Support       | Optional React support with proper peer dependencies **React 19** + **React Compiler ready** |
+| ⚛️ React Support       | React support with proper peer dependencies **React 19** + **React Compiler** ready |
 | 🔒 Type Safety         | Strict TypeScript configuration for better type safety |
 
 <br/>
