@@ -13,6 +13,7 @@
     "dist"
   ],
   "scripts": {
+    "setup": "node setup.mjs",
     "build": "tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
