@@ -2,8 +2,6 @@
 
 A generic library template starter for new JOYCO libs.
 
-### ✨ Features
-
 | Feature                | Description                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------ |
 | 🚀 Quick Setup         | Initialize your library with a single command using `pnpm setup:template` |
