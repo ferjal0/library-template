@@ -150,7 +150,7 @@ async function main() {
     await execAsync('pnpm install')
 
     // Remove setup script from package.json
-    delete packageJson.scripts.setup
+    delete packageJson.scripts['setup:template']
     await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n')
 
     // Self-destruct this file
