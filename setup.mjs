@@ -133,6 +133,9 @@ async function main() {
     }
   }
 
+  // Ask for package description
+  const packageDescription = await question('\nEnter a description for your library: ')
+
   // Ask about PR preview
   const enablePrPreview = (await question('\nSet up PR and commit automatic package preview? (yes/no) '))
     .toLowerCase()
@@ -146,6 +149,7 @@ async function main() {
   // Show confirmation
   console.log('\nPlease confirm the following changes:')
   console.log(`- Package name will be set to: ${libraryName}`)
+  console.log(`- Package description: ${packageDescription}`)
   console.log(`- PR preview publishing will be: ${enablePrPreview ? 'ENABLED' : 'DISABLED'}`)
   console.log(`- Automatic release will be: ${enableAutoRelease ? 'ENABLED' : 'DISABLED'}`)
 
@@ -162,6 +166,8 @@ async function main() {
     const packageJsonPath = join(__dirname, 'package.json')
     const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'))
     packageJson.name = libraryName
+    packageJson.description = packageDescription
+    packageJson.version = '0.0.0'
     await fs.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n')
 
     // Handle workflow files
