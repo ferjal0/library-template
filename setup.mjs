@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
+import { builtinModules } from 'node:module'
 
 const execAsync = promisify(exec)
 const __filename = fileURLToPath(import.meta.url)
@@ -32,97 +33,83 @@ const banner = `
    ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
 `
 
+const scopedPackagePattern = new RegExp('^(?:@([^/]+?)[/])?([^/]+?)$')
+const blacklist = ['node_modules', 'favicon.ico']
+
 function validatePackageName(name) {
-  if (!name) {
-    return { valid: false, errors: ['Package name cannot be empty'] }
+  const errors = []
+
+  if (name === null) {
+    errors.push('Package name cannot be null')
+    return { valid: false, errors }
+  }
+
+  if (name === undefined) {
+    errors.push('Package name cannot be undefined')
+    return { valid: false, errors }
+  }
+
+  if (typeof name !== 'string') {
+    errors.push('Package name must be a string')
+    return { valid: false, errors }
+  }
+
+  if (!name.length) {
+    errors.push('Package name length must be greater than zero')
+  }
+
+  if (name.match(/^\./)) {
+    errors.push('Package name cannot start with a period')
+  }
+
+  if (name.match(/^_/)) {
+    errors.push('Package name cannot start with an underscore')
+  }
+
+  if (name.trim() !== name) {
+    errors.push('Package name cannot contain leading or trailing spaces')
+  }
+
+  // Check blacklist
+  blacklist.forEach((blacklistedName) => {
+    if (name.toLowerCase() === blacklistedName) {
+      errors.push(`${blacklistedName} is a blacklisted name`)
+    }
+  })
+
+  // Check for core module names
+  if (builtinModules.includes(name.toLowerCase())) {
+    errors.push(`${name} is a core module name`)
   }
 
   if (name.length > 214) {
-    return { valid: false, errors: ['Package name cannot be longer than 214 characters'] }
+    errors.push('Package name cannot be longer than 214 characters')
   }
 
-  // Handle scoped packages
-  const scopedPackageRegex = /^@([^/]+)\/([^/]+)$/
-  const isScoped = name.startsWith('@')
-
-  if (isScoped) {
-    if (!name.match(scopedPackageRegex)) {
-      return {
-        valid: false,
-        errors: ['Scoped package names must be in the format @scope/package-name'],
-      }
-    }
-
-    const [, scope, packageName] = name.match(scopedPackageRegex)
-
-    // Validate scope
-    if (!scope.match(/^[a-z0-9-_.]+$/)) {
-      return {
-        valid: false,
-        errors: [
-          'Scope can only contain URL-safe characters: lowercase letters, numbers, hyphens, underscores, and dots',
-        ],
-      }
-    }
-
-    // Validate package name part
-    if (!packageName.match(/^[a-z0-9-_.]+$/)) {
-      return {
-        valid: false,
-        errors: [
-          'Package name can only contain URL-safe characters: lowercase letters, numbers, hyphens, underscores, and dots',
-        ],
-      }
-    }
-
-    if (packageName.match(/[._]{2,}/) || scope.match(/[._]{2,}/)) {
-      return { valid: false, errors: ['Neither scope nor package name can contain consecutive dots or underscores'] }
-    }
-
-    if (scope.match(/^[._]/) || packageName.match(/^[._]/)) {
-      return { valid: false, errors: ['Neither scope nor package name can start with dots or underscores'] }
-    }
-
-    // Package name must be lowercase
-    if (name.toLowerCase() !== name) {
-      return { valid: false, errors: ['Package name must be lowercase'] }
-    }
-
-    return { valid: true }
-  }
-
-  // Non-scoped package validation
-  if (name.match(/^[._]/)) {
-    return { valid: false, errors: ['Package name cannot start with dots or underscores'] }
-  }
-
-  // Package name must be lowercase
+  // Check for mixed case
   if (name.toLowerCase() !== name) {
-    return { valid: false, errors: ['Package name must be lowercase'] }
+    errors.push('Package name must be lowercase')
   }
 
-  // Package name can only contain URL-safe characters
-  if (!name.match(/^[a-z0-9-_.]+$/)) {
-    return {
-      valid: false,
-      errors: [
-        'Package name can only contain URL-safe characters: lowercase letters, numbers, hyphens, underscores, and dots',
-      ],
+  if (/[~'!()*]/.test(name.split('/').slice(-1)[0])) {
+    errors.push('Package name cannot contain special characters ("~\'!()*")')
+  }
+
+  if (encodeURIComponent(name) !== name) {
+    // Check if it's a scoped package name, like @user/package
+    const nameMatch = name.match(scopedPackagePattern)
+    if (nameMatch) {
+      const user = nameMatch[1]
+      const pkg = nameMatch[2]
+      if (encodeURIComponent(user) === user && encodeURIComponent(pkg) === pkg) {
+        return { valid: true }
+      }
     }
+
+    errors.push('Package name can only contain URL-friendly characters')
   }
 
-  // No consecutive dots or underscores
-  if (name.match(/[._]{2,}/)) {
-    return { valid: false, errors: ['Package name cannot contain consecutive dots or underscores'] }
-  }
-
-  // No node_modules or favicon.ico
-  const blacklist = ['node_modules', 'favicon.ico']
-  if (blacklist.includes(name)) {
-    return { valid: false, errors: ['Package name is blacklisted'] }
-  }
-
-  return { valid: true }
+  return { valid: errors.length === 0, errors: errors.length ? errors : undefined }
 }
 
 async function main() {
