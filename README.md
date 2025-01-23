@@ -2,7 +2,7 @@
 
 A generic library template starter for new JOYCO libs.
 
-## ✨ Features
+### ✨ Features
 
 | Feature                | Description                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------ |
