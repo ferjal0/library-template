@@ -1,10 +1,10 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
-import reactCompiler from 'eslint-plugin-react-compiler';
-import prettier from 'eslint-config-prettier';
-import eslintPluginPrettier from 'eslint-plugin-prettier';
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
+import prettier from 'eslint-config-prettier'
+import eslintPluginPrettier from 'eslint-plugin-prettier'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default tseslint.config([
@@ -24,4 +24,4 @@ export default tseslint.config([
     },
   },
   prettier,
-]);
+])

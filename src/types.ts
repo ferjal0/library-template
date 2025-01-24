@@ -1,3 +1,3 @@
-export type MetriConfig = {
+export type GenericConfig = {
   debug?: boolean
 }
