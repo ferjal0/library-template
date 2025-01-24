@@ -6,7 +6,6 @@ import reactCompiler from 'eslint-plugin-react-compiler'
 import prettier from 'eslint-config-prettier'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 
-/** @type {import('eslint').Linter.Config[]} */
 export default tseslint.config([
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
