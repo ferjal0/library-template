@@ -21,6 +21,7 @@ export default tseslint.config([
     rules: {
       'react-compiler/react-compiler': 'error',
       'prettier/prettier': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   prettier,
