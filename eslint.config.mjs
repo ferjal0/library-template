@@ -8,7 +8,7 @@ import eslintPluginPrettier from 'eslint-plugin-prettier'
 
 export default tseslint.config([
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-  { ignores: ['dist'] },
+  { ignores: ['dist', '**/.*'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
   tseslint.configs.recommended,
