@@ -11,3 +11,11 @@ pnpm add @joycostudio/generic --filter ./templates/[your-template-project]
 ```
 
 Replace `your-template-project` with the name of your specific template project directory.
+
+## Preview with Stackblitz
+If you enabled the [🔍 PR Preview] with PKG.PR.NEW you should add the template flag in the `publish-any-commit.yml` file.
+
+```diff
+- run: pnpx pkg-pr-new publish --comment=update
++ run: pnpx pkg-pr-new publish --comment=update --template templates/[your-template-project]
+```
