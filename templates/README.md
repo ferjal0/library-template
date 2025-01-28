@@ -19,3 +19,18 @@ If you enabled the [🔍 PR Preview] with PKG.PR.NEW you should add the template
 - run: pnpx pkg-pr-new publish --comment=update
 + run: pnpx pkg-pr-new publish --comment=update --template templates/[your-template-project]
 ```
+
+## Quickstart
+```bash
+pnpx create-react-router@latest ./templates/basic
+```
+
+Delete unused files:
+```bash
+rm ./templates/basic/.dockerignore ./templates/basic/Dockerfile ./templates/basic/README.md
+```
+
+Run the linter for the new template:
+```bash
+pnpm lint
+```
