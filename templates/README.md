@@ -20,7 +20,7 @@ If you enabled the [🔍 PR Preview] with PKG.PR.NEW you should add the template
 + run: pnpx pkg-pr-new publish --comment=update --template templates/[your-template-project]
 ```
 
-## Quickstart
+## ⚡️ Quickstart
 ```bash
 pnpx create-react-router@latest ./templates/basic
 ```
