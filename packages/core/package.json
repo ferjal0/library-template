@@ -2,5 +2,9 @@
   "name": "core",
   "type": "module",
   "main": "./index.ts",
-  "types": "./index.ts"
+  "types": "./index.ts",
+  "private": true,
+  "changeset": {
+    "ignore": true
+  }
 }
