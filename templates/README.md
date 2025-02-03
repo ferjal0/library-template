@@ -37,7 +37,7 @@ pnpm lint
 
 Remember to add this to make changesets ignore this npm project for versioning and publishing.
 
-```
+```json
 "private": true,
 "changeset": {
   "ignore": true
