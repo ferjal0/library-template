@@ -34,3 +34,12 @@ Run the linter for the new template:
 ```bash
 pnpm lint
 ```
+
+Remember to add this to make changesets ignore this npm project for versioning and publishing.
+
+```
+"private": true,
+"changeset": {
+  "ignore": true
+}
+```
