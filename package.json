@@ -12,6 +12,12 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "setup:template": "node setup.mjs",
     "build": "tsup",
