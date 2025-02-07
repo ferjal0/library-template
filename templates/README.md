@@ -44,7 +44,7 @@ Remember to add this to the `package.json` in order to make changesets ignore th
 }
 ```
 
-Also add this to the generated `.changeset/config.json` to make changesets ignore templates for **versioning**.
+Also add this to the generated `.changeset/config.json` to make changesets ignore templates for **versioning**, this string should match the template's `package.json` **"name"** key.
 
 ```json
 "ignore": [
