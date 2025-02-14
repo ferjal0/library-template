@@ -1,6 +1,6 @@
 # <img src="./static/JOYCO.png" alt="JOYCO Logo" height="36" width="36" align="top" />&nbsp;&nbsp;WTF is this?
 
-A generic library template starter for new JOYCO libs.
+A generic library template starter for new libraries.
 
 | Features               | Description                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------ |
