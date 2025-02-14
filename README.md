@@ -1,4 +1,4 @@
-# <img src="./static/JOYCO.png" alt="JOYCO Logo" height="36" width="36" align="top" />&nbsp;&nbsp;WTF is this?
+# <img src="./static/JOYCO.png" alt="JOYCO Logo" height="36" width="36" align="top" />&nbsp;&nbsp;JOYCO | Library Template
 
 A generic library template starter for brand new libraries.
 
