@@ -30,7 +30,7 @@ This will fill package information and install deps for you. Remember to commit.
 ### `package.json` defaults
 
 - `author: joyco.studio`
-- `publishConfig.access: private`
+- `publishConfig.access: public`
 - `version: 0.0.0`
 - `license: ISC`
 
