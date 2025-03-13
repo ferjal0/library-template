@@ -1,11 +1,11 @@
 {
-  "name": "catapult-ui",
+  "name": "library-template",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "version": "0.0.0",
-  "description": "A React UI component library based on Tailwinds' Catalyst UI.",
+  "description": "Generic library template",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
